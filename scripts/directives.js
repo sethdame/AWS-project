@@ -46,5 +46,5 @@ var amazonApp = angular.module('amazonApp.directives', [])
 	       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 	      })();
 	    }
-	  }
-	});
+	}
+});
