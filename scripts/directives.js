@@ -1,1 +1,1 @@
-angular.module('myApp.directives', [])
+var amazonApp = angular.module('amazonApp.directives', [])

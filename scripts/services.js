@@ -1,1 +1,1 @@
-angular.module('myApp.services', []);
+var amazonApp = angular.module('amazonApp.services', []);
