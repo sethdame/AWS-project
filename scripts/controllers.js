@@ -2,6 +2,9 @@ var app = angular.module('amazonApp')
 
 	app.controller('MainCtrl', function($scope) {
 		$scope.signedIn = function(oauth) {
-			$scope.user = oauth;
+			UserService.setCurrentUser(oauth)
+				.then(function(user) {
+					$scope.user = user;
+				});
 		}
 });

@@ -9,8 +9,8 @@ var app = angular.module("amazonApp", ['ngRoute', 'amazonApp.services', 'amazonA
 			.otherwise({
 				redirectTo: '/'
 			});
-		window.onLoadCallback = function() {
-			angular.element(document).ready(function() {
+		window.onLoadCallback = function() {					//bootstraps oauth2 library
+			angular.element(document).ready(function() {		//and bootraps app
 				gapi.client.load('oauth2', 'v2', function() {
 					angular.bootstrap(document, ['amazonApp'])
 				});

@@ -8,14 +8,13 @@ var app = angular.module('amazonApp.directives', [])
 		    scope: {
 		      afterSignin: '&'
     		},
-    	link: function(scope, ele, attrs) {
-	      // Set standard google class
-	      attrs.$set('class', 'g-signin');
-	      // Set the clientid
-	      attrs.$set('data-clientid', 
+    	link: function(scope, ele, attrs) {            
+	      attrs.$set('class', 'g-signin');					// Sets standard google class
+	      
+	      attrs.$set('data-clientid', 						// Sets the clientid
 	          attrs.clientId+'.apps.googleusercontent.com');
-	      // build scope urls
-	      var scopes = attrs.scopes || [
+	 
+	      var scopes = attrs.scopes || [					// builds scope urls
 	        'auth/plus.login', 
 	        'auth/userinfo.email'
 	      ];
@@ -24,8 +23,7 @@ var app = angular.module('amazonApp.directives', [])
 	        scopeUrls.push('https://www.googleapis.com/' + scopes[i]);
 	      };
 
-	      // Create a custom callback method
-	      var callbackId = "_googleSigninCallback",
+	      var callbackId = "_googleSigninCallback",			// Creates a custom callback method
 	          directiveScope = scope;
 	      window[callbackId] = function() {
 	        var oauth = arguments[0];
@@ -33,13 +31,12 @@ var app = angular.module('amazonApp.directives', [])
 	        window[callbackId] = null;
 	      };
 
-	      // Set standard google signin button settings
-	      attrs.$set('data-callback', callbackId);
+	      attrs.$set('data-callback', callbackId);			// Sets standard google signin button settings
 	      attrs.$set('data-cookiepolicy', 'single_host_origin');
 	      attrs.$set('data-requestvisibleactions', 'http://schemas.google.com/AddActivity')
 	      attrs.$set('data-scope', scopeUrls.join(' '));
 
-	      // Finally, reload the client library to 
+	      // Reloads the client library to 
 	      // force the button to be painted in the browser
 	      (function() {
 	       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
