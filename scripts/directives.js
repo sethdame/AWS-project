@@ -1,5 +1,6 @@
-var amazonApp = angular.module('amazonApp.directives', [])
-	amazonApp.directive('googleSignin', function() {
+var app = angular.module('amazonApp.directives', [])
+
+	app.directive('googleSignin', function() {
   		return {
 		    restrict: 'A',
 		    template: '<span id="signinButton"></span>',

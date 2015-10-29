@@ -1,6 +1,6 @@
-var amazonApp = angular.module("amazonApp", ['ngRoute', 'amazonApp.services', 'amazonApp.directives'])
+var app = angular.module("amazonApp", ['ngRoute', 'amazonApp.services', 'amazonApp.directives'])
 	
-	amazonApp.config(function($routeProvider) {
+	app.config(function($routeProvider) {
 		$routeProvider
 			.when('/', {
 				controller: 'MainCtrl',
