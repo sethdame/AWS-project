@@ -1,6 +1,6 @@
-var app = angular.module('amazonApp.directives', [])
+angular.module('amazonApp.directives', [])
 
-	app.directive('googleSignin', function() {
+	.directive('googleSignin', function() {
   		return {
 		    restrict: 'A',
 		    template: '<span id="signinButton"></span>',
@@ -18,7 +18,9 @@ var app = angular.module('amazonApp.directives', [])
 	        'auth/plus.login', 
 	        'auth/userinfo.email'
 	      ];
+
 	      var scopeUrls = [];
+
 	      for (var i = 0; i < scopes.length; i++) {
 	        scopeUrls.push('https://www.googleapis.com/' + scopes[i]);
 	      };
@@ -46,3 +48,22 @@ var app = angular.module('amazonApp.directives', [])
 	    }
 	}
 });
+
+.directive('fileUpload', function() {
+	return {
+		restrict: 'A',
+		scope: {
+			fileUpload: '&'
+		},
+		template: '<input type="file" id="file" /> ',
+		replace: true,
+		link: function(scope, ele, attrs) {
+			ele.blind('change', function() {
+				var file = ele[0].files;
+				if (file) {
+					scope.fileUpload({files: file});
+				}
+			})
+		}
+	}
+})
