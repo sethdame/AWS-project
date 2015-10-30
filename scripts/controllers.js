@@ -1,35 +1,35 @@
 angular.module('amazonApp')
 
-	.controller('MainCtrl', function($scope, AWSService, UserService, StripeService) {
-		$scope.signedIn = function(oauth) {
-			UserService.setCurrentUser(oauth).then(function(user) {
-					$scope.user = user;
-				});
-		}
-
-		var getItemsForSale = function () {
-			UserService.itemsForSale().then(function(images) {
-				$scope.images = images;
+.controller('MainCtrl', function($scope, AWSService, UserService, StripeService) {
+	$scope.signedIn = function(oauth) {
+		UserService.setCurrentUser(oauth).then(function(user) {
+				$scope.user = user;
 			});
-		}
+	}
 
-		$scope.onFile = function(files) {
-			UserService.upLoadItemsForSale(files).then(function(data) {
-				getItemsForSale();
-			});
-		}
+	var getItemsForSale = function () {
+		UserService.itemsForSale().then(function(images) {
+			$scope.images = images;
+		});
+	}
 
-		$scope.sellImage = function(image) {
-			$scope.showCC = true;
-			$scope.currentItem = image;
-		}
+	$scope.onFile = function(files) {
+		UserService.upLoadItemsForSale(files).then(function(data) {
+			getItemsForSale();
+		});
+	}
 
-		$scope.submitPayment = function() {
-			UserService.createPayment($scope.currentItem, $scope.charge)
-			.then(function(data) {
-				$scope.showCC = false;
-			});
-		}
+	$scope.sellImage = function(image) {
+		$scope.showCC = true;
+		$scope.currentItem = image;
+	}
 
-		getItemsForSale();
+	$scope.submitPayment = function() {
+		UserService.createPayment($scope.currentItem, $scope.charge)
+		.then(function(data) {
+			$scope.showCC = false;
+		});
+	}
+
+	getItemsForSale();
 });
