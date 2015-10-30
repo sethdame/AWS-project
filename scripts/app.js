@@ -1,8 +1,7 @@
 angular.module('amazonApp', ['ngRoute', 'amazonApp.services', 'amazonApp.directives'])
 	
 .config(function(AWSServiceProvider) {
-	AWSServiceProvider
-		.setArn('arn:aws:iam::435001563040:role/seth-aws-role');
+	AWSServiceProvider.setArn('arn:aws:iam::435001563040:role/seth-aws-role');
 })
 
 .config(function(StripeServiceProvider) {

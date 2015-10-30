@@ -191,8 +191,8 @@ angular.module('amazonApp.services', []);
 		if (logger) AWS.config.logger = logger;
 	}
 
-	self.$get = function($q, $cacheFactory) {
-		var s3Cache = $cacheFactory('s3Cache'),
+	self.$get = function($q, $cacheFactory) {           // creates an obj if needed or reuse
+		var s3Cache = $cacheFactory('s3Cache'),			// if already made
 			dynamoCache = $cacheFactory('dynamo'),
 			snsCache = $cacheFactory('sns'),
 			sqsCache = $cacheFactory('sqs');
